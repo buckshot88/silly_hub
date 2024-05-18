@@ -3,42 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silly Things</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        h1 {
-            font-size: 3em;
-            color: #ff6347;
-        }
-        p {
-            font-size: 1.5em;
-        }
-        .silly-thing {
-            margin: 20px 0;
-            padding: 10px;
-            border: 2px dashed #ff6347;
-            border-radius: 10px;
-            background-color: #fff;
-            display: inline-block;
-        }
-    </style>
+    <title>3D Print Store</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Silly Things Website!</h1>
-        <p>Here you will find a collection of silly things that make us laugh!</p>
-        <div class="silly-thing">🦄 Unicorns dancing in the rain!</div>
-        <div class="silly-thing">🍕 Pizza with pineapple hats!</div>
-        <div class="silly-thing">🧦 Socks that tell jokes!</div>
-        <div class="silly-thing">🐸 Frogs playing the guitar!</div>
-    </div>
+    <header>
+        <div class="container">
+            <h1>3D Print Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>Welcome to our 3D Print Store</h2>
+            <p>Discover unique and high-quality 3D prints for all your needs.</p>
+            <a href="#products" class="btn">View Products</a>
+        </div>
+    </section>
+
+    <section id="featured">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="featured-container"></div>
+        </div>
+    </section>
+
+    <section id="best-sellers">
+        <div class="container">
+            <h2>Best Sellers</h2>
+            <div class="best-sellers-container"></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are passionate about 3D printing and aim to provide the best quality prints to our customers.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or inquiries, feel free to reach out to us.</p>
+            <form action="contact.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 3D Print Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
