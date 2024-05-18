@@ -20,7 +20,6 @@
             </nav>
             <div class="search">
                 <input type="text" id="searchInput" placeholder="Search products...">
-                <button onclick="searchProducts()">Search</button>
             </div>
         </div>
     </header>
@@ -76,7 +75,88 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productData = [
+                {
+                    "id": 1,
+                    "name": "Featured Product 1",
+                    "description": "Description of Featured Product 1",
+                    "price": 39.99,
+                    "image": "featured1.jpg",
+                    "featured": true,
+                    "bestSeller": false
+                },
+                {
+                    "id": 2,
+                    "name": "Featured Product 2",
+                    "description": "Description of Featured Product 2",
+                    "price": 49.99,
+                    "image": "featured2.jpg",
+                    "featured": true,
+                    "bestSeller": false
+                },
+                {
+                    "id": 3,
+                    "name": "Best Seller 1",
+                    "description": "Description of Best Seller 1",
+                    "price": 29.99,
+                    "image": "bestseller1.jpg",
+                    "featured": false,
+                    "bestSeller": true
+                },
+                {
+                    "id": 4,
+                    "name": "Best Seller 2",
+                    "description": "Description of Best Seller 2",
+                    "price": 34.99,
+                    "image": "bestseller2.jpg",
+                    "featured": false,
+                    "bestSeller": true
+                }
+            ];
+
+            const featuredContainer = document.querySelector('.featured-container');
+            const bestSellersContainer = document.querySelector('.best-sellers-container');
+
+            productData.forEach(product => {
+                const productElement = `
+                    <div class="product">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <span class="price">$${product.price.toFixed(2)}</span>
+                        <button>Add to Cart</button>
+                    </div>
+                `;
+                
+                if (product.featured) {
+                    featuredContainer.innerHTML += productElement;
+                } else if (product.bestSeller) {
+                    bestSellersContainer.innerHTML += productElement;
+                }
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const keyword = searchInput.value.trim().toLowerCase();
+                filterProducts(keyword);
+            });
+
+            function filterProducts(keyword) {
+                const allProducts = document.querySelectorAll('.product');
+                allProducts.forEach(product => {
+                    const productName = product.querySelector('h3').textContent.toLowerCase();
+                    const productDescription = product.querySelector('p').textContent.toLowerCase();
+                    if (productName.includes(keyword) || productDescription.includes(keyword)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
